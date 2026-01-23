@@ -1,5 +1,5 @@
 "use client";
-import css from "./NotePreeview.module.css";
+import css from "./NotePreview.module.css";
 import { useParams, useRouter } from "next/navigation";
 import Modal from "@/components/Modal/Modal";
 import { useQuery } from "@tanstack/react-query";
@@ -38,9 +38,7 @@ function NotePreview() {
     );
   }
 
-  const formattedDate = note.updatedAt
-    ? `Updated at: ${note.updatedAt}`
-    : `Created at: ${note.createdAt}`;
+  const formattedDate = `Created at: ${note.createdAt}`;
 
   return (
     <Modal onClose={close}>
