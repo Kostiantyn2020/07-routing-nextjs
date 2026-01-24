@@ -12,7 +12,13 @@ type PageProps = {
   params: Promise<{ slug: string[] }>;
 };
 
-const URL_TAG_MAP: Record<string, NoteTag> = {};
+const URL_TAG_MAP: Record<string, NoteTag> = {
+  todo: "Todo",
+  work: "Work",
+  personal: "Personal",
+  meeting: "Meeting",
+  shopping: "Shopping",
+};
 
 export default async function Notes({ params }: PageProps) {
   const { slug } = await params;
@@ -33,7 +39,7 @@ export default async function Notes({ params }: PageProps) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient tag={tag} />
+      <NotesClient key={tag ?? "all"} tag={tag} />
     </HydrationBoundary>
   );
 }
